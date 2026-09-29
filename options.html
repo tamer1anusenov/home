@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CUDA AI Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 24px;
+      max-width: 520px;
+      color: #222;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #76b900;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    .row {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #save {
+      background: #76b900;
+      color: white;
+    }
+
+    #test {
+      background: #333;
+      color: white;
+    }
+
+    #status {
+      margin-top: 14px;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .ok {
+      color: #1a7f37;
+    }
+
+    .err {
+      color: #b42318;
+    }
+
+    .info {
+      margin-top: 18px;
+      padding: 12px;
+      background: #f6f8fa;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #444;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h2>CUDA AI Settings</h2>
+
+  <label for="apiKey">Alem.ai API Key</label>
+  <input
+    type="password"
+    id="apiKey"
+    placeholder="Paste your API key here"
+    autocomplete="off"
+  />
+
+  <div class="row">
+    <button id="save">Save</button>
+    <button id="test">Test Connection</button>
+  </div>
+
+  <div id="status"></div>
+
+  <div class="info">
+    Endpoint: <code>https://llm.alem.ai/v1/chat/completions</code><br />
+    Model: <code>qwen3-8</code><br /><br />
+    The key is stored locally in your browser extension storage.
+    Do not publish this extension with your real API key hardcoded.
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

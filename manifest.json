@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "CUDA AI Transparent",
+  "version": "1.5",
+  "description": "Transparent mini CUDA code assistant available on all websites.",
+  "permissions": [
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://llm.alem.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

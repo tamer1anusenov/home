@@ -1,0 +1,287 @@
+/* Invisible clickable circle */
+#cuda-ai-fab {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 58px;
+  height: 58px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
+}
+
+/* Tiny almost-invisible dot, shown only on hover */
+#cuda-ai-fab-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.45);
+  font: 600 11px/34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: center;
+  letter-spacing: 0.2px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.95);
+  opacity: 0;
+  transform: scale(0.82);
+  transition: opacity 0.16s ease, transform 0.16s ease, background 0.16s ease, color 0.16s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Show dot on hover / focus / active */
+#cuda-ai-fab:hover #cuda-ai-fab-dot,
+#cuda-ai-fab:focus-visible #cuda-ai-fab-dot,
+#cuda-ai-fab:active #cuda-ai-fab-dot {
+  opacity: 1;
+  transform: scale(1);
+  background: rgba(255, 255, 255, 0.30);
+  color: rgba(0, 0, 0, 0.70);
+}
+
+/* Really transparent chat window */
+#cuda-ai-chat {
+  position: fixed;
+  bottom: 84px;
+  right: 18px;
+  width: 320px;
+  max-width: calc(100vw - 36px);
+  height: 420px;
+  max-height: calc(100vh - 120px);
+  display: none;
+  flex-direction: column;
+  z-index: 2147483647;
+  overflow: hidden;
+
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  border-radius: 16px;
+  box-shadow: none;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111;
+  pointer-events: auto;
+}
+
+/* Header */
+#cuda-ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 0px solid rgba(0, 0, 0, 0.05);
+  background: transparent;
+}
+
+#cuda-ai-title {
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.2px;
+  color: rgba(0, 0, 0, 0.55);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.95);
+}
+
+#cuda-ai-close {
+  background: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.42);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.95);
+}
+
+#cuda-ai-close:hover {
+  color: rgba(0, 0, 0, 0.82);
+}
+
+/* Messages */
+#cuda-ai-messages {
+  flex: 1;
+  min-height: 0;
+  padding: 10px;
+  overflow-y: auto;
+  background: transparent;
+  font-size: 13px;
+}
+
+.cuda-message {
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  max-width: 90%;
+  word-break: break-word;
+  white-space: pre-wrap;
+  line-height: 1.35;
+
+  background: transparent;
+  border: none;
+  color: #111;
+
+  /* This helps text remain readable on random websites */
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.95),
+    0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.cuda-message.user {
+  margin-left: auto;
+  background: transparent;
+  color: #111;
+}
+
+.cuda-message.ai {
+  margin-right: auto;
+  background: transparent;
+  border: none;
+  color: #111;
+}
+
+/* Code wrapper */
+.cuda-code-wrap {
+  position: relative;
+  margin: 8px 0 0;
+}
+
+/* Code block: very light transparent background, no blur */
+.cuda-message pre {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.20);
+  border: 0px solid rgba(0, 0, 0, 0.08);
+  box-shadow: none;
+  overflow-x: auto;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #111;
+  text-shadow: none;
+}
+
+.cuda-message code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  white-space: pre;
+  color: #111;
+  text-shadow: none;
+}
+
+
+/* Copy button — always visible, high contrast on any site */
+.cuda-copy-btn {
+  position: absolute !important;
+  top: 6px !important;
+  right: 6px !important;
+  z-index: 3 !important;
+  padding: 4px 8px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  background: rgba(0, 0, 0, 0.62) !important;
+  color: #ffffff !important;
+  font: 600 10px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0.2px !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+  text-shadow: none !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
+  transition: background 0.14s ease, transform 0.08s ease !important;
+}
+
+.cuda-copy-btn:hover {
+  background: rgba(0, 0, 0, 0.80) !important;
+}
+
+.cuda-copy-btn:active {
+  transform: scale(0.96) !important;
+}
+
+.cuda-copy-btn:disabled {
+  background: rgba(0, 0, 0, 0.45) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  cursor: default !important;
+}
+
+/* Input area */
+#cuda-ai-input-area {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background: transparent;
+}
+
+#cuda-ai-input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.22);
+  outline: none;
+  font-size: 13px;
+  color: #111;
+  caret-color: #111;
+  text-shadow: none;
+}
+
+#cuda-ai-input::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+  text-shadow: none;
+}
+
+#cuda-ai-input:focus {
+  border-color: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+}
+
+#cuda-ai-send {
+  padding: 9px 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.055);
+  color: #111;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  text-shadow: none;
+}
+
+#cuda-ai-send:hover {
+  background: rgba(0, 0, 0, 0.09);
+}
+
+#cuda-ai-send:disabled {
+  background: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.35);
+  cursor: not-allowed;
+}
+
+/* Subtle scrollbar */
+#cuda-ai-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+#cuda-ai-messages::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.10);
+  border-radius: 999px;
+}
+
+#cuda-ai-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
