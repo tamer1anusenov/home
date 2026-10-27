@@ -56,7 +56,7 @@
   right: 18px;
   width: 320px;
   max-width: calc(100vw - 36px);
-  height: 420px;
+  height: 260px;
   max-height: calc(100vh - 120px);
   display: none;
   flex-direction: column;
@@ -155,6 +155,7 @@
 .cuda-code-wrap {
   position: relative;
   margin: 8px 0 0;
+  display: block;
 }
 
 /* Code block: very light transparent background, no blur */
@@ -180,42 +181,6 @@
   text-shadow: none;
 }
 
-
-/* Copy button — always visible, high contrast on any site */
-.cuda-copy-btn {
-  position: absolute !important;
-  top: 6px !important;
-  right: 6px !important;
-  z-index: 3 !important;
-  padding: 4px 8px !important;
-  border-radius: 8px !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  background: rgba(0, 0, 0, 0.62) !important;
-  color: #ffffff !important;
-  font: 600 10px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-  letter-spacing: 0.2px !important;
-  cursor: pointer !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  user-select: none !important;
-  text-shadow: none !important;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
-  transition: background 0.14s ease, transform 0.08s ease !important;
-}
-
-.cuda-copy-btn:hover {
-  background: rgba(0, 0, 0, 0.80) !important;
-}
-
-.cuda-copy-btn:active {
-  transform: scale(0.96) !important;
-}
-
-.cuda-copy-btn:disabled {
-  background: rgba(0, 0, 0, 0.45) !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  cursor: default !important;
-}
 
 /* Input area */
 #cuda-ai-input-area {
@@ -250,7 +215,8 @@
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
 }
 
-#cuda-ai-send {
+#cuda-ai-send,
+#cuda-ai-chat .cuda-copy-btn {
   padding: 9px 12px;
   border: none;
   border-radius: 10px;
@@ -262,11 +228,13 @@
   text-shadow: none;
 }
 
-#cuda-ai-send:hover {
+#cuda-ai-send:hover,
+#cuda-ai-chat .cuda-copy-btn:hover {
   background: rgba(0, 0, 0, 0.09);
 }
 
-#cuda-ai-send:disabled {
+#cuda-ai-send:disabled,
+#cuda-ai-chat .cuda-copy-btn:disabled {
   background: rgba(0, 0, 0, 0.03);
   color: rgba(0, 0, 0, 0.35);
   cursor: not-allowed;
@@ -284,4 +252,9 @@
 
 #cuda-ai-messages::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Lower the chat window slightly */
+#cuda-ai-chat {
+  bottom: 76px;
 }
